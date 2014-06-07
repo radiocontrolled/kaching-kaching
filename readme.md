@@ -14,3 +14,6 @@ repository for security reasons).
 
 # Disclaimer
 This tool is for informational purposes only. 
+
+# Roadmap 
+- Use money.js as a RequireJS/AMD module.
