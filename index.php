@@ -10,6 +10,8 @@
 <body>
 	<?php include 'request.php'; ?>
 	<section>
+		<select name="first-currency"></select>
+		<select name="second-currency"></select>
 	</section>
 <script src="vis.js"></script>
 </body>
