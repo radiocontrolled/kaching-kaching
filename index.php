@@ -9,9 +9,22 @@
 </head>
 <body>
 	<?php include 'request.php'; ?>
-	<section>
-		<select name="first-currency" id="first-currency"></select>
-		<select name="second-currency" id="second-currency"></select>
-	</section>
+	<form id="currencyInputForm">
+
+		<fieldset class="select-styling">
+			<input id="cityInput" name="name" placeholder="Amount">
+		
+			<label for="first-currency">From</label>
+	  		<select name="first-currency" id="first-currency"></select>
+	  	
+			<label for="second-currency">To</label>
+			<select name="second-currency" id="second-currency"></select>	
+			
+			<input type="submit" value="Convert" id="searchButton">	
+		</fieldset>
+		
+
+	</form>
+
 <script src="vis.js"></script>
 </body>
