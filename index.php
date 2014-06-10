@@ -12,7 +12,7 @@
 	<form id="currencyInputForm">
 
 		<fieldset class="select-styling">
-			<input id="cityInput" name="name" placeholder="Amount">
+			<input id="amountInput" name="name" placeholder="Amount">
 		
 			<label for="first-currency">From</label>
 	  		<select name="first-currency" id="first-currency"></select>

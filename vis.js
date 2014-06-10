@@ -1,4 +1,4 @@
-var first, second;
+var first, second, amount;
 var currencyPair = [];
 
 // Using `fx.settings` (must be after loading the library)
@@ -46,25 +46,28 @@ function selectCurrencies(){
 }
 
 
-/* convertCurrencies
- * this is the function that will convert one 
- * currency's value to another.
- * 
- */
+var currencyInputForm = document.getElementById("currencyInputForm");
 
-function convertCurrencies(pair, amount){
-	//fx.settings = { from: "CAD", to: "GBP" };
-	//console.log(fx.convert(1000)); 
+currencyInputForm.addEventListener("submit",function(event){
+	event.preventDefault();
+	var amount = document.getElementById("amountInput");
+	return amount;
+});
+
+/* convertCurrencies
+* this is the function that will convert one
+* currency's value to another.
+*
+*/
+
+function convertCurrencies(amount, pair){
+	
+//fx.settings = { from: "CAD", to: "GBP" };
+//console.log(fx.convert(1000));
 }
 
 
-/* function whatAmount 
- * allow the user to specify the amount 
- * of either currency they wish to convert
- */
-
-
 /* function: displayRates
- * this function will display rates to the 
- * end user
- */
+* this function will display rates to the
+* end user
+*/
