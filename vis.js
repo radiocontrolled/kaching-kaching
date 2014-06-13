@@ -34,9 +34,13 @@ var setup = function (){
 /* return an array, currencyPair, with the first and 
  * second currency collected */
 var selectCurrencies = function(){
+	var first = document.getElementById("first-currency");
+	var second = document.getElementById("second-currency");
 	currencyPair[0] = first.value;
 	currencyPair[1] = second.value;
+	console.log(currencyPair);
 	return currencyPair;
+
 };
 
 
@@ -44,6 +48,8 @@ var selectCurrencies = function(){
 function convertCurrencies(amountToConvert, pairOfCurrencies){
 	fx.settings = { from: pairOfCurrencies[0], to: pairOfCurrencies[1] };
 	result = fx.convert(amountToConvert, pairOfCurrencies);
+	console.log(result);
+	console.log(currencyPair);
 }
 
 
@@ -72,4 +78,4 @@ var displayRates = function(){
  when application loads, display 1 USD to 1 GBP conversion rate. 
  * */ 
 
-
+/* bug: issue converting currency after first submit, order of of currency pair not correct */
