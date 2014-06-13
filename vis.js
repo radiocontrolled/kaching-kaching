@@ -1,16 +1,10 @@
 var first, second, amount;
 var currencyPair = [];
 
-// Using `fx.settings` (must be after loading the library)
+// defaults
 fx.settings = {
 	from : "GBP",
-	to : "AED"
-};
-
-// Using `fxSetup` (must be before loading the library; see note)
-var fxSetup = {
-	from : "GBP",
-	to : "AED"
+	to : "USD"
 };
 
 
@@ -39,10 +33,18 @@ var setup = function (){
 
 /* return an array, currencyPair, with the first and 
  * second currency collected */
-function selectCurrencies(){
+var selectCurrencies = function(){
 	currencyPair[0] = first.value;
 	currencyPair[1] = second.value;
 	return currencyPair;
+};
+
+
+
+// convert one currency's value to another
+function convertCurrencies(amountToConvert, pairOfCurrencies){
+	fx.settings = { from: pairOfCurrencies[0], to: pairOfCurrencies[1] };
+	console.log(fx.convert(amountToConvert));
 }
 
 
@@ -50,24 +52,21 @@ var currencyInputForm = document.getElementById("currencyInputForm");
 
 currencyInputForm.addEventListener("submit",function(event){
 	event.preventDefault();
-	var amount = document.getElementById("amountInput");
-	return amount;
+	amount = document.getElementById("amountInput");
+	amount = amount.value;
+	var pair = selectCurrencies();
+	convertCurrencies(amount,pair);
 });
 
-/* convertCurrencies
-* this is the function that will convert one
-* currency's value to another.
-*
-*/
-
-function convertCurrencies(amount, pair){
-	
-//fx.settings = { from: "CAD", to: "GBP" };
-//console.log(fx.convert(1000));
-}
 
 
 /* function: displayRates
 * this function will display rates to the
 * end user
 */
+
+/* function: defaults 
+ when application loads, display 1 USD to 1 GBP conversion rate. 
+ * */ 
+
+
