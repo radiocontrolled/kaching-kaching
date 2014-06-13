@@ -14,6 +14,8 @@
 
 		<fieldset class="select-styling">
 			
+			<div class="panel" id="display"></div>
+			
 			<input type="number" id="amountInput" name="name" placeholder="Amount">
 		
 			<label for="first-currency">From</label>

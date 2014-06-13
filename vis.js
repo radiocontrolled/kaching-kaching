@@ -1,4 +1,4 @@
-var first, second, amount;
+var first, second, amount, result;
 var currencyPair = [];
 
 // defaults
@@ -40,30 +40,33 @@ var selectCurrencies = function(){
 };
 
 
-
 // convert one currency's value to another
 function convertCurrencies(amountToConvert, pairOfCurrencies){
 	fx.settings = { from: pairOfCurrencies[0], to: pairOfCurrencies[1] };
-	console.log(fx.convert(amountToConvert));
+	result = fx.convert(amountToConvert, pairOfCurrencies);
 }
 
 
 var currencyInputForm = document.getElementById("currencyInputForm");
 
-currencyInputForm.addEventListener("submit",function(event){
+currencyInputForm.addEventListener("submit", function(event){
 	event.preventDefault();
 	amount = document.getElementById("amountInput");
 	amount = amount.value;
 	var pair = selectCurrencies();
 	convertCurrencies(amount,pair);
+	displayRates();
 });
 
 
+// display converted rate to end user 
+var displayRates = function(){
+	var display = document.getElementById("display");
+	display.innerHTML = null;
+	var textToDisplay = document.createTextNode(result);
+	display.appendChild(textToDisplay);	
+};
 
-/* function: displayRates
-* this function will display rates to the
-* end user
-*/
 
 /* function: defaults 
  when application loads, display 1 USD to 1 GBP conversion rate. 
