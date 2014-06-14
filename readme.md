@@ -1,4 +1,4 @@
-# Features 
+## Features 
 
 Currency converstion tool
 - Pick a currency from a drop down menu
@@ -8,17 +8,17 @@ Currency converstion tool
 Historical rate 
 - View performance over last 5 days on a graph
 
+## Dependencies
 
 The exchange rate data that this tool uses is from the <a href="https://openexchangerates.org/">Open Exchange Rates</a> project. In this application, the data
-is bootstraped into the page using the cURL PHP library. This is handled in a file called `request.php`, which isn't included in the GitHub 
+is bootstraped into the page using the cURL PHP library. Bootstrapping is handled in a file called `request.php`, which isn't included in the GitHub 
 repository for security reasons.
 
 This application also makes use of <a href="https://josscrowcroft.github.io/money.js/">Money.js</a>, a JavaScript currency conversion library. 
 
-# Disclaimer
-This tool is for informational purposes only. 
+## Disclaimer
+Please note, this tool is for informational purposes only. I can't verify the data, which is from a <a href="https://openexchangerates.org/">third party</a>, or the accuracy of the conversions. 
 
-# Roadmap 
+## Roadmap 
 - Use money.js as a RequireJS/AMD module.
 
-left off: finish walking through money.js documentation. 
