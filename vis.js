@@ -1,5 +1,4 @@
-var first, second, amount, result;
-var currencyPair = [];
+var amount, result, displayFirst, displaySecond;
 
 // defaults
 
@@ -25,9 +24,9 @@ function optionPopulator(element){
 
 /* setup both select elements with currency values*/
 var setup = function (){
-	first = document.getElementById("first-currency");
+	var first = document.getElementById("first-currency");
 	optionPopulator(first);
-	second = document.getElementById("second-currency");
+	var second = document.getElementById("second-currency");
 	optionPopulator(second);
 }();
 
@@ -43,8 +42,8 @@ function convertCurrencies(amountToConvert){
 }
 
 
+/* get user input */ 
 var currencyInputForm = document.getElementById("currencyInputForm");
-
 currencyInputForm.addEventListener("submit", function(event){
 	event.preventDefault();
 	amount = document.getElementById("amountInput");
@@ -53,14 +52,31 @@ currencyInputForm.addEventListener("submit", function(event){
 	displayRates();
 });	
 
+/* convert a currency's acronym to its full name*/
+function acronymToName(){
+	for (var fullName in fx.names){
+		if ( fullName == fx.settings.from ){
+			displayFirst = fx.names[fullName];
+
+		}
+		else if ( fullName == fx.settings.to ){
+			displaySecond = fx.names[fullName];
+		}
+	}
+}
 
 // display converted rate to end user 
 var displayRates = function(){
 	var display = document.getElementById("display");
 	display.innerHTML = null;
+	acronymToName();
+	result = parseFloat(result);
+	result = result.toFixed(2);
+	result = amount + " " + displayFirst + " equals " + result + " " + displaySecond;
 	var textToDisplay = document.createTextNode(result);
 	display.appendChild(textToDisplay);	
 };
+
 
 
 /* function: defaults 
