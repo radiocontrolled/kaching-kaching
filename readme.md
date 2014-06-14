@@ -11,8 +11,8 @@ Historical rate
 ## Dependencies
 
 The exchange rate data that this tool uses is from the <a href="https://openexchangerates.org/">Open Exchange Rates</a> project. Open Exchange Rates data 
-(rates and currency names) is bootstrapped into the page using the cURL PHP library. Bootstrapping is handled in a file called `request.php`, which isn't included in the public 
-GitHub repository for this project, but for an example of how you might do this see `exampleRequest.php`.
+(rates and currency names) is bootstrapped into the page using the cURL PHP library. I handle bootstrapping in a request file (not included in this repo). See
+`exampleRequest.php` for a sample of how you might build this. 
 
 This application also makes use of <a href="https://josscrowcroft.github.io/money.js/">Money.js</a>, a JavaScript currency conversion library. 
 
