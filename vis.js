@@ -2,6 +2,7 @@ var first, second, amount, result;
 var currencyPair = [];
 
 // defaults
+
 fx.settings = {
 	from : "GBP",
 	to : "USD"
@@ -31,25 +32,14 @@ var setup = function (){
 }();
 
 
-/* return an array, currencyPair, with the first and 
- * second currency collected */
-var selectCurrencies = function(){
-	var first = document.getElementById("first-currency");
-	var second = document.getElementById("second-currency");
-	currencyPair[0] = first.value;
-	currencyPair[1] = second.value;
-	console.log(currencyPair);
-	return currencyPair;
-
-};
-
-
 // convert one currency's value to another
-function convertCurrencies(amountToConvert, pairOfCurrencies){
-	fx.settings = { from: pairOfCurrencies[0], to: pairOfCurrencies[1] };
-	result = fx.convert(amountToConvert, pairOfCurrencies);
-	console.log(result);
-	console.log(currencyPair);
+function convertCurrencies(amountToConvert){
+	var firstCurrency = document.getElementById("first-currency");
+	firstCurrency = firstCurrency.value;
+	var secondCurrency = document.getElementById("second-currency");
+	secondCurrency = secondCurrency.value;
+	fx.settings = { from: firstCurrency, to: secondCurrency };
+	result = fx.convert(amountToConvert);	
 }
 
 
@@ -59,10 +49,9 @@ currencyInputForm.addEventListener("submit", function(event){
 	event.preventDefault();
 	amount = document.getElementById("amountInput");
 	amount = amount.value;
-	var pair = selectCurrencies();
-	convertCurrencies(amount,pair);
+	convertCurrencies(amount);
 	displayRates();
-});
+});	
 
 
 // display converted rate to end user 
