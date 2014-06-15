@@ -1,7 +1,6 @@
 var amount, result, displayFirst, displaySecond;
 
 // defaults
-
 fx.settings = {
 	from : "GBP",
 	to : "USD"
@@ -22,13 +21,38 @@ function optionPopulator(element){
 	}
 }
 
-/* setup both select elements with currency values*/
+// display converted rate to end user 
+var displayRates = function(amount){
+	var display = document.getElementById("display");
+	display.innerHTML = null;
+	acronymToName();
+	result = parseFloat(result);
+	result = result.toFixed(2);
+	amount = document.getElementById("amountInput");
+	amount = amount.value;
+	result = amount + " " + displayFirst + " equals " + result + " " + displaySecond;
+	var textToDisplay = document.createTextNode(result);
+	display.appendChild(textToDisplay);	
+};
+
+
+/* setup both select elements with currency values
+ when application loads, display 1 USD to 1 GBP conversion rate. 
+*/
 var setup = function (){
 	var first = document.getElementById("first-currency");
 	optionPopulator(first);
+	first.value = "GBP"; // default first currency is GBP
 	var second = document.getElementById("second-currency");
 	optionPopulator(second);
+	second.value = "USD"; // default second currency is USD
+	amount = document.getElementById("amountInput");
+	amount.value = 1;
+	amount = amount.value;
+	convertCurrencies(amount);
+	displayRates(amount);
 }();
+
 
 
 // convert one currency's value to another
@@ -57,30 +81,12 @@ function acronymToName(){
 	for (var fullName in fx.names){
 		if ( fullName == fx.settings.from ){
 			displayFirst = fx.names[fullName];
-
 		}
 		else if ( fullName == fx.settings.to ){
 			displaySecond = fx.names[fullName];
-		}
+		} 
 	}
 }
 
-// display converted rate to end user 
-var displayRates = function(){
-	var display = document.getElementById("display");
-	display.innerHTML = null;
-	acronymToName();
-	result = parseFloat(result);
-	result = result.toFixed(2);
-	result = amount + " " + displayFirst + " equals " + result + " " + displaySecond;
-	var textToDisplay = document.createTextNode(result);
-	display.appendChild(textToDisplay);	
-};
 
 
-
-/* function: defaults 
- when application loads, display 1 USD to 1 GBP conversion rate. 
- * */ 
-
-/* bug: issue converting currency after first submit, order of of currency pair not correct */
