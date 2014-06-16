@@ -19,6 +19,3 @@ This application also makes use of <a href="https://josscrowcroft.github.io/mone
 ## Disclaimer
 Please note, this tool is for informational purposes only. I can't verify the data, which is from a <a href="https://openexchangerates.org/">third party</a>, or the accuracy of the conversions. 
 
-## Roadmap 
-- Use money.js as a RequireJS/AMD module.
-
