@@ -21,6 +21,12 @@ input, select {
 	width: 10em;
 }
 
+fieldset{
+	border: 1px solid #34495E;
+ 	display: inline-block;
+ 	width: 50%;
+}
+
 select{
 	-moz-appearance: button;
     list-style: none outside none;
@@ -31,7 +37,6 @@ select{
     text-align: left;
     text-decoration: none;
     vertical-align: middle;
-    width: 100px;
 }
 
 input:hover,
@@ -39,12 +44,6 @@ input:active,
 input:focus{
 	background: #34495E;
 	color: white;
-}
-
-fieldset{
-	border: 1px solid #34495E;
- 	display: inline-block;
- 	width: 50%;
 }
 
 .select-styling{
@@ -55,3 +54,40 @@ fieldset{
 ::-moz-placeholder { color:#34495E; } /* firefox 19+ */
 :-ms-input-placeholder { color:#34495E; } /* ie */
 input:-moz-placeholder { color:#34495E; }
+
+@media (max-width: 768px) {
+	body{
+		line-height: 1.2;	
+	}
+	
+	.panel{
+		font-size: 90%;
+		margin-bottom: 1em;
+	}
+	
+	fieldset{
+		width: 90%;
+		
+	} 
+	fieldset input, fieldset select{
+		width: 100%;
+		float: left;
+		margin: 0.5em 2em 0 0;
+	}
+	
+	#amountInput{
+		padding: .5em 0 .5em 0;
+		
+	}
+	
+	label {
+		float: left;
+		font-size: 65%;
+		margin: 2em 0 0 0;
+		text-transform: uppercase;
+	}
+	
+	#searchButton{
+		margin-top: 2.5em;
+	}
+}

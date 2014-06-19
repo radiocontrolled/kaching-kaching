@@ -10,26 +10,29 @@
 <body>
 	<?php include 'request.php'; ?>
 	
-	<form id="currencyInputForm">
-
-		<fieldset class="select-styling">
+	<section>
+	
+		<form id="currencyInputForm">
+	
+			<fieldset class="select-styling">
+				
+				<div class="panel" id="display"></div>
+				
+				<input type="number" id="amountInput" name="name" placeholder="Amount">
 			
-			<div class="panel" id="display"></div>
+				<label for="first-currency">From</label>
+		  		<select name="first-currency" id="first-currency"></select>
+		  	
+				<label for="second-currency">To</label>
+				<select name="second-currency" id="second-currency"></select>	
+				
+				<input type="submit" value="Convert" id="searchButton">	
+				
+			</fieldset>
 			
-			<input type="number" id="amountInput" name="name" placeholder="Amount">
+		</form>
 		
-			<label for="first-currency">From</label>
-	  		<select name="first-currency" id="first-currency"></select>
-	  	
-			<label for="second-currency">To</label>
-			<select name="second-currency" id="second-currency"></select>	
-			
-			<input type="submit" value="Convert" id="searchButton">	
-			
-		</fieldset>
-		
-
-	</form>
+	</section>
 
 <script src="converter.js"></script>
 </body>
