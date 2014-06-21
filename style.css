@@ -7,24 +7,24 @@ body {
 	font-size: 90%;
 }
 
-/* begin currency conversion styles */
 label{
 	font-size: 65%;
 	text-transform: uppercase;
 }
 
 input, select {
-	border: 1px solid #7f8c8d;
-    background: #EBEDEF;
+	border: none;
+    background: #fff;
     padding: .5em 1em;
     margin: 1em;
 	width: 10em;
 }
 
 fieldset{
-	border: 1px solid #7f8c8d;
  	display: inline-block;
  	width: 50%;
+	background: #ebedef;
+	border: none;
 }
 
 select{
@@ -44,7 +44,7 @@ input:active,
 input:focus{
 	background: #34495E;
 	color: white;
-	border:  1px solid #34495E;
+	border:  none;
 }
 
 .select-styling{
