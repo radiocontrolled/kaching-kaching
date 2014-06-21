@@ -11,6 +11,8 @@
 	<?php include 'request.php'; ?>
 	
 	<section>
+		<main>
+		</main>
 	
 		<form id="currencyInputForm">
 	

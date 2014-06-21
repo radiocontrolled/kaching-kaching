@@ -1,6 +1,8 @@
 var amount, result, displayFirst, displaySecond;
+var w = window.innerWidth/1.1;
+var h = window.innerHeight/3;
 
-// defaults
+// default currency settings
 fx.settings = {
 	from : "GBP",
 	to : "USD"
@@ -88,5 +90,32 @@ function acronymToName(){
 	}
 }
 
+/* drawSVG, a function taking width and height parameters
+ * which appends an svg canvas to the <main> element */
+var drawSVG = function(w,h){
+	var svg = d3.select("main")
+		.append("svg")
+		.attr({
+			width:w, 
+			height: h
+		});
+};
 
+//inital call to drawSVG
+drawSVG(w,h);
+
+
+/* resize() function to re-draw the svg 
+ * canvas, responding to changes in the 
+ * viewport size
+ */
+var resize = function() {
+	var w = window.innerWidth/1.1;
+	var h = window.innerHeight/3;
+	d3.select("svg").remove();
+	drawSVG(w,h);
+};
+
+d3.select(window)
+	.on('resize', resize); 
 
