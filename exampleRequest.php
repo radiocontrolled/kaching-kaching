@@ -25,7 +25,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $list = curl_init("http://openexchangerates.org/api/{$currenciesList}?app_id={$appId}");
 curl_setopt($list, CURLOPT_RETURNTRANSFER, 1);
 
-$historical = curl_init("http://openexchangerates.org/api/{$dateString}?app_id={$appId}");
+$historical = curl_init("http://openexchangerates.org/api/historical/{$dateString}?app_id={$appId}");
 curl_setopt($historical, CURLOPT_RETURNTRANSFER, 1);
 
 // Get the exchange rates data 
