@@ -10,10 +10,8 @@ $file = 'latest.json';
 $currenciesList = 'currencies.json';
 
 // get today's date in yyyy-mm-dd format
-//$theTime = date('Y-m-d');
-//$historicalData = $theTime . ".json";
-$dateString = "2010-07-06.json";
-echo $dateString;
+$theTime = date('Y-m-d');
+$dateString = $theTime . ".json";
 
 // Open Exchange Rates App ID
 $appId = 'YOURID';
