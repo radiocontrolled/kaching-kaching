@@ -8,7 +8,6 @@ fx.settings = {
 	to : "USD"
 };
 
-
 /* populate the select elements' option values with currencies 
  * from the fx.rates object 
  */

@@ -1,7 +1,11 @@
-
 <?php
-// Access the Open Exchange Rates API with cURL - http://php.net/manual/en/book.curl.php
-// Could also be e.g. 'currencies.json' or 'historical/2011-01-01.json'
+
+/* get current 
+ * exchange rates
+ */
+
+// Open Exchange Rates App ID
+$appId = 'YOUR_API_KEY';
 
 // latest exchange rates 
 $file = 'latest.json';
@@ -10,11 +14,8 @@ $file = 'latest.json';
 $currenciesList = 'currencies.json';
 
 // get today's date in yyyy-mm-dd format
-$theTime = date('Y-m-d');
-$dateString = $theTime . ".json";
-
-// Open Exchange Rates App ID
-$appId = 'YOURID';
+$currentDate = date('Y-m-d');
+$dateString = $currentDate . ".json";
 
 // Open cURL session:
 $ch = curl_init("http://openexchangerates.org/api/{$file}?app_id={$appId}");
@@ -23,8 +24,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 $list = curl_init("http://openexchangerates.org/api/{$currenciesList}?app_id={$appId}");
 curl_setopt($list, CURLOPT_RETURNTRANSFER, 1);
 
-$historical = curl_init("http://openexchangerates.org/api/historical/{$dateString}?app_id={$appId}");
-curl_setopt($historical, CURLOPT_RETURNTRANSFER, 1);
+
 
 // Get the exchange rates data 
 $jsonRates = curl_exec($ch);
@@ -34,15 +34,10 @@ curl_close($ch);
 $jsonCurrencyNames = curl_exec($list);
 curl_close($list);
 
-$jsonHistoricalRates = curl_exec($historical);
-curl_close($historical);
-
 
 // Decode JSON response:
 $exchangeRates = json_decode($jsonRates);
 $currencyNames = json_decode($jsonCurrencyNames);
-$historicalRates = json_decode($jsonHistoricalRates);
-
 
 
 // Bootstrap loaded exchange rates into JavaScript for money.js:
@@ -51,6 +46,31 @@ echo '<script>fx.rates = ' . json_encode($exchangeRates->rates) . '; fx.base = '
 // Bootstrap loaded currency names into JavaScript for money.js
 echo '<script>fx.names = ' . json_encode($currencyNames) . '; ' . '</script>';
 
-echo '<script>historical = '. json_encode($historicalRates) . ' ; ' . '</script>';
+
+/* get 3 years 
+ * historical rates data
+ */
+
+$years = array(
+			date('Y-m-d', strtotime('1 year ago')). ".json",
+			date('Y-m-d', strtotime('2 years ago')). ".json",
+			date('Y-m-d', strtotime('3 years ago')). ".json"	
+		);
+
+
+function historicalBootstrap($years, $id){
+
+    for($i = 0; $i < 3; $i++){
+        $date = $years[$i]; 
+        $ch = curl_init("http://openexchangerates.org/api/historical/{$date}?app_id={$id}");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        $jsonHistoricalRates = curl_exec($ch);
+        curl_close($ch);
+        echo '<script>_'. $i . 'historical = '. $jsonHistoricalRates . ';' . '</script>';
+    }   
+}
+
+historicalBootstrap($years, $appId);
+
 
 ?>
